@@ -71,14 +71,14 @@ module.exports = configure(function (ctx) {
       // analyze: true,
       env: {
         API_URL: ctx.dev
-          ? "http://api.agroscan.blog"
-          : "http://api.agroscan.blog",
+          ? "https://api.agroscan.blog"
+          : "https://api.agroscan.blog",
         SANCTUM_URL: ctx.dev
-          ? "http://api.agroscan.blog"
-          : "http://api.agroscan.blog",
+          ? "https://api.agroscan.blog"
+          : "https://api.agroscan.blog",
         STORAGE_URL: ctx.dev
-          ? "http://api.agroscan.blog/storage"
-          : "http://api.agroscan.blog",
+          ? "https://api.agroscan.blog/storage"
+          : "https://api.agroscan.blog",
       },      // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
