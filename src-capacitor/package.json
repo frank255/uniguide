@@ -1,0 +1,13 @@
+{
+  "name": "uniguide",
+  "version": "0.0.1",
+  "description": "university guide for high school graduands",
+  "author": "Frank Ilunga <ilungafrank3@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/app": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
