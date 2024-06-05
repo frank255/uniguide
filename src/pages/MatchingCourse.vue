@@ -165,6 +165,9 @@ const viewDetails = (item) => {
 //   rows.value = response.data.data;
 // };
 const onSubmit = async () => {
+  $q.loading.show({
+    delay: 400, // ms
+  });
   const subjects = comb.value.value.split(",");
   Submitted.value = true;
   try {
@@ -173,14 +176,9 @@ const onSubmit = async () => {
     );
     console.log(response);
     rows.value = response.data.data;
-    $q.notify({
-      color: "green-4",
-      textColor: "white",
-      icon: "cloud_done",
-      message: "Submitted",
-      position: "top",
-    });
+
     results.value = false;
+    $q.loading.hide();
   } catch (error) {
     console.log(error);
     $q.notify({

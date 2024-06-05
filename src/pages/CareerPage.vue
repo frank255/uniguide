@@ -131,23 +131,24 @@ const viewInstitution = (item) => {
   careerDetails.value = item;
 };
 const searchCareer = async () => {
+  $q.loading.show({
+    delay: 400, // ms
+  });
   const response = await api.get(
     `https://api.agroscan.blog/api/careers?career_title=${name.value}`
   );
   rows.value = response.data.data;
+  $q.loading.hide();
 };
 const getCareers = async () => {
+  $q.loading.show({
+    delay: 400, // ms
+  });
   try {
     const response = await api.get(`https://api.agroscan.blog/api/careers`);
     rows.value = response.data.data;
-    $q.notify({
-      color: "green-4",
-      textColor: "white",
-      icon: "cloud_done",
-      message: "Submitted",
-      position: "top",
-    });
     results.value = false;
+    $q.loading.hide();
   } catch (error) {
     console.log(error);
     $q.notify({

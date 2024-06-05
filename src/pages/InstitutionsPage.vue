@@ -101,25 +101,27 @@ const viewInstitution = (item) => {
   instDetails.value = item;
 };
 const searchInstitution = async () => {
+  $q.loading.show({
+    delay: 400, // ms
+  });
   const response = await api.get(
     `https://api.agroscan.blog/api/institutions?name=${name.value}`
   );
   rows.value = response.data.data;
+  $q.loading.hide();
 };
 const getInstitutions = async () => {
+  $q.loading.show({
+    delay: 400, // ms
+  });
   try {
     const response = await api.get(
       `https://api.agroscan.blog/api/institutions`
     );
     rows.value = response.data.data;
-    $q.notify({
-      color: "green-4",
-      textColor: "white",
-      icon: "cloud_done",
-      message: "Submitted",
-      position: "top",
-    });
+
     results.value = false;
+    $q.loading.hide();
   } catch (error) {
     console.log(error);
     $q.notify({
