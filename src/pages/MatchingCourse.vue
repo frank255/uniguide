@@ -161,7 +161,7 @@ const viewDetails = (item) => {
   courseDetails.value = item;
 };
 // const viewMore = async () => {
-//   const response = await api.get(`http://api.agroscan.blog/api/bachfsixes`);
+//   const response = await api.get(`https://api.agroscan.blog/api/bachfsixes`);
 //   rows.value = response.data.data;
 // };
 const onSubmit = async () => {
@@ -169,7 +169,7 @@ const onSubmit = async () => {
   Submitted.value = true;
   try {
     const response = await api.get(
-      `http://api.agroscan.blog/api/bachfsixes?subjects=${subjects}&major=${major.value}`
+      `https://api.agroscan.blog/api/bachfsixes?subjects=${subjects}&major=${major.value}`
     );
     console.log(response);
     rows.value = response.data.data;

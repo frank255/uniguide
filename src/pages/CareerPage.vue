@@ -132,13 +132,13 @@ const viewInstitution = (item) => {
 };
 const searchCareer = async () => {
   const response = await api.get(
-    `http://api.agroscan.blog/api/careers?career_title=${name.value}`
+    `https://api.agroscan.blog/api/careers?career_title=${name.value}`
   );
   rows.value = response.data.data;
 };
 const getCareers = async () => {
   try {
-    const response = await api.get(`http://api.agroscan.blog/api/careers`);
+    const response = await api.get(`https://api.agroscan.blog/api/careers`);
     rows.value = response.data.data;
     $q.notify({
       color: "green-4",

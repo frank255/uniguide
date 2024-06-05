@@ -102,13 +102,15 @@ const viewInstitution = (item) => {
 };
 const searchInstitution = async () => {
   const response = await api.get(
-    `http://api.agroscan.blog/api/institutions?name=${name.value}`
+    `https://api.agroscan.blog/api/institutions?name=${name.value}`
   );
   rows.value = response.data.data;
 };
 const getInstitutions = async () => {
   try {
-    const response = await api.get(`http://api.agroscan.blog/api/institutions`);
+    const response = await api.get(
+      `https://api.agroscan.blog/api/institutions`
+    );
     rows.value = response.data.data;
     $q.notify({
       color: "green-4",
