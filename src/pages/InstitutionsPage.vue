@@ -105,7 +105,7 @@ const searchInstitution = async () => {
     delay: 400, // ms
   });
   const response = await api.get(
-    `https://api.agroscan.blog/api/institutions?name=${name.value}`
+    `https://test.agroscan.co.tz/api/institutions?name=${name.value}`
   );
   rows.value = response.data.data;
   $q.loading.hide();
@@ -116,7 +116,7 @@ const getInstitutions = async () => {
   });
   try {
     const response = await api.get(
-      `https://api.agroscan.blog/api/institutions`
+      `https://test.agroscan.co.tz/api/institutions`
     );
     rows.value = response.data.data;
 

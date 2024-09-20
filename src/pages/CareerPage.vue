@@ -135,7 +135,7 @@ const searchCareer = async () => {
     delay: 400, // ms
   });
   const response = await api.get(
-    `https://api.agroscan.blog/api/careers?career_title=${name.value}`
+    `https://test.agroscan.co.tz/api/careers?career_title=${name.value}`
   );
   rows.value = response.data.data;
   $q.loading.hide();
@@ -145,7 +145,7 @@ const getCareers = async () => {
     delay: 400, // ms
   });
   try {
-    const response = await api.get(`https://api.agroscan.blog/api/careers`);
+    const response = await api.get(`https://test.agroscan.co.tz/api/careers`);
     rows.value = response.data.data;
     results.value = false;
     $q.loading.hide();

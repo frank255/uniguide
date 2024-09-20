@@ -61,6 +61,7 @@ module.exports = configure(function (ctx) {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      distDir: ctx.mode.capacitor ? 'scr-capacitor/www' : 'dist/spa',
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -71,14 +72,14 @@ module.exports = configure(function (ctx) {
       // analyze: true,
       env: {
         API_URL: ctx.dev
-          ? "https://api.agroscan.blog"
-          : "https://api.agroscan.blog",
+          ? "https://test.agroscan.co.tz"
+          : "https://test.agroscan.co.tz",
         SANCTUM_URL: ctx.dev
-          ? "https://api.agroscan.blog"
-          : "https://api.agroscan.blog",
+          ? "https://test.agroscan.co.tz"
+          : "https://test.agroscan.co.tz",
         STORAGE_URL: ctx.dev
-          ? "https://api.agroscan.blog/storage"
-          : "https://api.agroscan.blog",
+          ? "https://test.agroscan.co.tz/storage"
+          : "https://test.agroscan.co.tz",
       },      // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
