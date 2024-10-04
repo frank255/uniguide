@@ -24,8 +24,23 @@
           v-model="comb"
           :options="combinationOptions"
           label="Select Your Combination *"
+          @update:model-value="onCombinationSelect()"
         ></q-select>
-
+        <!-- Dynamically generated inputs for grades -->
+        <div v-if="subjectGrades.length > 0">
+          <div v-for="(subject, index) in subjectGrades" :key="index">
+            <q-select
+              outlined
+              v-model="subjectGrades[index].grade"
+              :label="`Enter grade for ${subject.subject} *`"
+              :options="['A', 'B', 'C', 'D', 'E', 'F']"
+              lazy-rules
+              :rules="[
+                (val) => (val && val.length > 0) || 'Please enter grade',
+              ]"
+            />
+          </div>
+        </div>
         <div class="flex justify-center">
           <q-btn label="Submit" type="submit" color="primary" />
           <q-btn label="Reset" type="reset" color="primary" class="q-ml-sm" />
@@ -123,6 +138,7 @@ const showDialog = ref(false);
 const courseDetails = ref("");
 const areaOfStudyOptions = ["Science", "Arts", "Business"];
 const vertical = ref("vertical");
+const subjectGrades = ref([]);
 const columns = [
   {
     name: "name",
@@ -156,6 +172,15 @@ const combinationOptions = computed(() => {
     return [];
   }
 });
+const onCombinationSelect = () => {
+  console.log("nafikiwa");
+  console.log(comb.value);
+  const subjects = comb.value.value.split(",");
+  subjectGrades.value = subjects.map((subject) => ({
+    subject,
+    grade: "",
+  }));
+};
 const viewDetails = (item) => {
   showDialog.value = true;
   courseDetails.value = item;
@@ -165,18 +190,23 @@ const viewDetails = (item) => {
 //   rows.value = response.data.data;
 // };
 const onSubmit = async () => {
-  $q.loading.show({
-    delay: 400, // ms
-  });
-  const subjects = comb.value.value.split(",");
+  $q.loading.show({ delay: 400 });
   Submitted.value = true;
+
+  // Collect subjects and grades
+  const subjectsWithGrades = subjectGrades.value.map((item) => ({
+    subject: item.subject,
+    grade: item.grade,
+  }));
+
   try {
     const response = await api.get(
-      `https://test.agroscan.co.tz/api/bachfsixes?subjects=${subjects}&major=${major.value}`
+      `https://test.agroscan.co.tz/api/bachfsixes?subjects=${JSON.stringify(
+        subjectsWithGrades
+      )}&major=${major.value}`
     );
     console.log(response);
     rows.value = response.data.data;
-
     results.value = false;
     $q.loading.hide();
   } catch (error) {
@@ -195,5 +225,6 @@ const onReset = () => {
   name.value = "";
   major.value = "";
   comb.value = "";
+  subjectGrades.value = [];
 };
 </script>
